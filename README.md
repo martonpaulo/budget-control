@@ -53,10 +53,9 @@ In the project directory, you can run the following scripts:
 - [x] Initial setup by clearing unnecessary files
 - [x] Update `package.json` settings
 - [x] Add Figma Prototype
-- [ ] Set up GitHub repository
-- [ ] Add GitHub description
-- [ ] Add GitHub Actions and deploy to GitHub Pages
-
+- [x] Set up GitHub repository
+- [x] Add GitHub description
+- [x] Add GitHub Actions and deploy to GitHub Pages
 - [ ] List project features
 - [ ] List project technologies
 - [ ] Add responsive layout
