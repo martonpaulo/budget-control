@@ -1,0 +1,48 @@
+{
+  "name": "budget-control",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://martonpaulo.github.io/budget-control",
+  "author": {
+    "name": "Marton Paulo",
+    "email": "info@martonpaulo.com",
+    "url": "https://www.martonpaulo.com"
+  },
+  "description": "Simple and intuitive financial tracker to manage your income and expenses. Easily log transactions, track your balance, and stay in control of your finances.",
+  "keywords": [
+    "finance",
+    "budget",
+    "money",
+    "expenses",
+    "income",
+    "savings"
+  ],
+  "repository": "github:martonpaulo/budget-control",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint src/**/*.{tsx,ts}"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^15.14.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.22.0",
+    "vite": "^6.1.0"
+  }
+}
