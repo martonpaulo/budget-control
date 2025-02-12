@@ -36,7 +36,10 @@
     "strictBindCallApply": true,
     "strictPropertyInitialization": true,
     "useUnknownInCatchVariables": true,
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
+
+    // styled-components
+    "types": ["styled-components"]
   },
   "include": ["vite.config.ts", "src"],
   "exclude": ["node_modules", "dist"]

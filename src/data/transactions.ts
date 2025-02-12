@@ -1,0 +1,68 @@
+import { TransactionType } from "@/types/transaction";
+
+export const transactionList: TransactionType[] = [
+  {
+    id: 1,
+    description: "Web Development",
+    amount: 12000.0,
+    variant: "income",
+    category: "Work",
+    date: new Date("Jan 29, 2025"),
+  },
+  {
+    id: 2,
+    description: "Hamburger",
+    amount: 59.8,
+    variant: "outcome",
+    category: "Food",
+    date: new Date("Jan 30, 2025"),
+  },
+  {
+    id: 3,
+    description: "Shoes",
+    amount: 84.99,
+    variant: "outcome",
+    category: "Shopping",
+    date: new Date("Jan 30, 2025"),
+  },
+  {
+    id: 4,
+    description: "Web Development",
+    amount: 11800.2,
+    variant: "income",
+    category: "Work",
+    date: new Date("Feb 29, 2025"),
+  },
+  {
+    id: 5,
+    description: "Freelance Design",
+    amount: 200.0,
+    variant: "income",
+    category: "Freelance",
+    date: new Date("Mar 10, 2025"),
+  },
+  {
+    id: 6,
+    description: "Groceries",
+    amount: 120.0,
+    variant: "outcome",
+    category: "Food",
+    date: new Date("Mar 11, 2025"),
+  },
+  {
+    id: 7,
+    description: "Electricity Bill",
+    amount: 230.0,
+    variant: "outcome",
+    category: "Utilities",
+    date: new Date("Mar 12, 2025"),
+  },
+  {
+    id: 8,
+    description: "Investment Return",
+    amount: 1200.0,
+    variant: "income",
+    category: "Investment",
+    date: new Date("Mar 15, 2025"),
+  },
+];
