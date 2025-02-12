@@ -7,7 +7,7 @@ export const transactionList: TransactionType[] = [
     amount: 12000.0,
     variant: "income",
     category: "Work",
-    date: new Date("Jan 29, 2025"),
+    createdAt: "2021-09-01T12:00:00.000Z",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const transactionList: TransactionType[] = [
     amount: 59.8,
     variant: "outcome",
     category: "Food",
-    date: new Date("Jan 30, 2025"),
+    createdAt: "2021-09-02T12:00:00.000Z",
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ export const transactionList: TransactionType[] = [
     amount: 84.99,
     variant: "outcome",
     category: "Shopping",
-    date: new Date("Jan 30, 2025"),
+    createdAt: "2021-09-03T12:00:00.000Z",
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ export const transactionList: TransactionType[] = [
     amount: 11800.2,
     variant: "income",
     category: "Work",
-    date: new Date("Feb 29, 2025"),
+    createdAt: "2021-09-04T12:00:00.000Z",
   },
   {
     id: 5,
@@ -39,7 +39,7 @@ export const transactionList: TransactionType[] = [
     amount: 200.0,
     variant: "income",
     category: "Freelance",
-    date: new Date("Mar 10, 2025"),
+    createdAt: "2021-09-05T12:00:00.000Z",
   },
   {
     id: 6,
@@ -47,7 +47,7 @@ export const transactionList: TransactionType[] = [
     amount: 120.0,
     variant: "outcome",
     category: "Food",
-    date: new Date("Mar 11, 2025"),
+    createdAt: "2021-09-06T12:00:00.000Z",
   },
   {
     id: 7,
@@ -55,7 +55,7 @@ export const transactionList: TransactionType[] = [
     amount: 230.0,
     variant: "outcome",
     category: "Utilities",
-    date: new Date("Mar 12, 2025"),
+    createdAt: "2021-09-07T12:00:00.000Z",
   },
   {
     id: 8,
@@ -63,6 +63,6 @@ export const transactionList: TransactionType[] = [
     amount: 1200.0,
     variant: "income",
     category: "Investment",
-    date: new Date("Mar 15, 2025"),
+    createdAt: "2021-09-08T12:00:00.000Z",
   },
 ];

@@ -24,7 +24,7 @@ For more of my work, visit my portfolio: [martonpaulo.com](https://martonpaulo.c
 
 ## 🛠️ Technologies Used
 
-This project is built using React, Vite, TypeScript, Styled Components, Phosphor Icons, Radix UI, and GitHub Actions.
+This project is built using React, Vite, TypeScript, Styled Components, Phosphor Icons, Radix UI, JSON Server, and GitHub Actions.
 
 ## 🚀 Getting Started
 
@@ -41,6 +41,7 @@ In the project directory, you can run the following scripts:
 - **`npm run dev`** - Starts the development server at `http://localhost:3000/budget-control`.
 - **`npm run build`** - Builds the project for production, outputting the files to the `dist` folder.
 - **`npm run lint`** - Runs ESLint to lint the code and ensure code quality.
+- **`npm run server`** - Starts the JSON Server at `http://localhost:3333/`.
 
 ## TODO List
 
@@ -67,3 +68,7 @@ In the project directory, you can run the following scripts:
 ## 📄 License
 
 This project is licensed under the **MIT License**. For more details, see the [LICENSE](LICENSE) file.
+
+```
+
+```

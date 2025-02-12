@@ -11,17 +11,6 @@ export const HeaderContent = styled.div`
   align-items: center;
 `;
 
-export const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 3.75rem;
-    height: 3.75rem;
-    margin-right: 1.25rem;
-  }
-`;
-
 export const NewTransactionButton = styled.button`
   height: 3.125rem;
   background-color: ${(props) => props.theme.colors.green500};

@@ -40,6 +40,11 @@ export const Content = styled(Dialog.Content)`
 
       &[type="number"] {
         font-family: ${(props) => props.theme.fonts.mono};
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          appearance: none;
+        }
       }
 
       &::placeholder {

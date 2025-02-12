@@ -6,5 +6,5 @@ export type TransactionType = {
   amount: number;
   variant: TransactionVariantType;
   category: string;
-  date: Date;
+  createdAt: string;
 };

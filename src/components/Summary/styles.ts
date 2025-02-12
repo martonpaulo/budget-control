@@ -31,14 +31,15 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     color: ${(props) => props.theme.colors.gray300};
   }
 
-  & > span {
-    display: block;
-    margin-top: 1rem;
-    font-size: 2rem;
-  }
-
   svg {
     color: ${(props) =>
       props.$iconColor && props.theme.colors[props.$iconColor]};
   }
+`;
+
+export const AmountContainer = styled.div`
+  display: block;
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-align: right;
 `;

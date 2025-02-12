@@ -1,0 +1,68 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Web Development",
+      "amount": 12000,
+      "variant": "income",
+      "category": "Work",
+      "createdAt": "2025-01-30T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "description": "Hamburger",
+      "amount": 59.8,
+      "variant": "outcome",
+      "category": "Food",
+      "createdAt": "2025-01-30T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "description": "Shoes",
+      "amount": 84.99,
+      "variant": "outcome",
+      "category": "Shopping",
+      "createdAt": "2025-02-05T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "description": "Web Development",
+      "amount": 11800.2,
+      "variant": "income",
+      "category": "Work",
+      "createdAt": "2025-02-10T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "description": "Freelance Design",
+      "amount": 200,
+      "variant": "income",
+      "category": "Freelance",
+      "createdAt": "2025-02-15T00:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "description": "Groceries",
+      "amount": 120,
+      "variant": "outcome",
+      "category": "Food",
+      "createdAt": "2025-02-20T00:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "description": "Electricity Bill",
+      "amount": 230,
+      "variant": "outcome",
+      "category": "Utilities",
+      "createdAt": "2025-02-25T00:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "description": "Investment Return",
+      "amount": 1200,
+      "variant": "income",
+      "category": "Investment",
+      "createdAt": "2025-03-01T00:00:00.000Z"
+    }
+  ]
+}
