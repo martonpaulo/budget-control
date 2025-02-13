@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import styled from "styled-components";
 
-import { TransactionVariantType } from "@/types/transaction";
+import { TransactionVariantEnum } from "@/types/transaction";
 
 export const Overlay = styled(Dialog.Overlay)`
   position: fixed;
@@ -62,7 +62,12 @@ export const Content = styled(Dialog.Content)`
       border-radius: ${(props) => props.theme.sizes.borderRadius};
       margin-top: 1.5rem;
 
-      &:hover {
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &:not(:disabled):hover {
         background-color: ${(props) => props.theme.colors.green700};
       }
     }
@@ -84,7 +89,7 @@ export const TransactionRadioGroup = styled(RadioGroup.Root)`
 `;
 
 interface TransactionTypeButtonProps {
-  value: TransactionVariantType;
+  value: TransactionVariantEnum;
 }
 
 export const TransactionTypeButton = styled(
@@ -102,14 +107,14 @@ export const TransactionTypeButton = styled(
   &:focus {
     box-shadow: 0 0 0 2px
       ${(props) =>
-        props.value === "income"
+        props.value === TransactionVariantEnum.INCOME
           ? props.theme.colors.green500
           : props.theme.colors.red500};
   }
 
   svg {
     color: ${(props) =>
-      props.value === "income"
+      props.value === TransactionVariantEnum.INCOME
         ? props.theme.colors.green300
         : props.theme.colors.red300};
   }
@@ -121,7 +126,7 @@ export const TransactionTypeButton = styled(
   &[data-state="checked"] {
     color: ${(props) => props.theme.colors.white};
     background-color: ${(props) =>
-      props.value === "income"
+      props.value === TransactionVariantEnum.INCOME
         ? props.theme.colors.green500
         : props.theme.colors.red500};
 

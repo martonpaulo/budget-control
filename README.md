@@ -24,7 +24,7 @@ For more of my work, visit my portfolio: [martonpaulo.com](https://martonpaulo.c
 
 ## 🛠️ Technologies Used
 
-This project is built using React, Vite, TypeScript, Styled Components, Phosphor Icons, Radix UI, JSON Server, and GitHub Actions.
+This project is built using React, Vite, TypeScript, Styled Components, Phosphor Icons, Radix UI, JSON Server, Axios, and GitHub Actions.
 
 ## 🚀 Getting Started
 
@@ -59,6 +59,7 @@ In the project directory, you can run the following scripts:
 - [x] Add GitHub Actions and deploy to GitHub Pages
 - [x] Modify overall design: font, colors, etc.
 - [x] List project technologies
+- [ ] Host JSON server
 - [ ] List project features
 - [ ] Add pagination to transactions
 - [ ] Add responsive layout

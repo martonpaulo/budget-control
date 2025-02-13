@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { TransactionVariantType } from "@/types/transaction";
+import { TransactionVariantEnum } from "@/types/transaction";
 
 export const TableContent = styled.table`
   border-collapse: separate;
@@ -42,12 +42,12 @@ export const TableContent = styled.table`
 `;
 
 interface AmountHighlightProps {
-  $variant: TransactionVariantType;
+  $variant: TransactionVariantEnum;
 }
 
 export const AmountHighlight = styled.span<AmountHighlightProps>`
   color: ${(props) =>
-    props.$variant === "income"
+    props.$variant === TransactionVariantEnum.INCOME
       ? props.theme.colors.green300
       : props.theme.colors.red300};
 `;

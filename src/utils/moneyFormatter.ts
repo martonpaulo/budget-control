@@ -1,8 +1,8 @@
-import { TransactionType, TransactionVariantType } from "@/types/transaction";
+import { TransactionType, TransactionVariantEnum } from "@/types/transaction";
 
 interface FormatCurrencyProps {
   amount: number;
-  transactionVariant?: TransactionVariantType;
+  transactionVariant?: TransactionVariantEnum;
   hasSign?: boolean;
 }
 
@@ -20,7 +20,7 @@ export function formatCurrency({
     return `$${amountInCurrency}`;
   }
 
-  const sign = transactionVariant === "income" ? "+" : "-";
+  const sign = transactionVariant === TransactionVariantEnum.INCOME ? "+" : "-";
 
   return `${sign} $${amountInCurrency}`;
 }
@@ -28,7 +28,7 @@ export function formatCurrency({
 export function getSummary(transactions: TransactionType[]) {
   return transactions.reduce(
     (acc, transaction) => {
-      if (transaction.variant === "income") {
+      if (transaction.variant === TransactionVariantEnum.INCOME) {
         acc.income += transaction.amount;
         acc.total += transaction.amount;
       } else {

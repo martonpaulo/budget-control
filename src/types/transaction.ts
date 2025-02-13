@@ -1,10 +1,13 @@
-export type TransactionVariantType = "income" | "outcome";
+export enum TransactionVariantEnum {
+  INCOME = "income",
+  OUTCOME = "outcome",
+}
 
 export type TransactionType = {
   id: number;
   description: string;
   amount: number;
-  variant: TransactionVariantType;
+  variant: TransactionVariantEnum;
   category: string;
   createdAt: string;
 };

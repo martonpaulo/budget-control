@@ -22,6 +22,7 @@ export default tseslint.config(
     rules: {
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
+      "no-restricted-imports": ["error", { patterns: ["./*", "../*"] }],
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": [
         "warn",

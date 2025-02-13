@@ -24,15 +24,19 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint src/**/*.{tsx,ts}",
-    "server": "json-server db.json --port 3333 --watch --delay 5000"
+    "server": "json-server db.json --port 3333 --watch --delay 1000"
   },
   "dependencies": {
+    "@hookform/resolvers": "^4.0.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-radio-group": "^1.2.3",
+    "axios": "^1.7.9",
     "phosphor-react": "^1.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "styled-components": "^6.1.15"
+    "react-hook-form": "^7.54.2",
+    "styled-components": "^6.1.15",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
