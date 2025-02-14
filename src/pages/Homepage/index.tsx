@@ -7,10 +7,14 @@ import { HomepageContainer } from "@/pages/Homepage/styles";
 import { SectionContainer } from "@/styles/shared";
 
 export function Homepage() {
-  const { filteredTransactions, statuses } = useTransactions();
-
-  const isLoading = statuses.filter.loading || statuses.load.loading;
-  const error = statuses.filter.error || statuses.load.error;
+  const { filteredTransactions, isLoading, error } = useTransactions(
+    (context) => ({
+      filteredTransactions: context.filteredTransactions,
+      isLoading:
+        context.statuses.filter.loading || context.statuses.load.loading,
+      error: context.statuses.filter.error || context.statuses.load.error,
+    })
+  );
 
   return (
     <HomepageContainer>

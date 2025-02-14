@@ -7,9 +7,13 @@ import { useTransactions } from "@/hooks/useTransactions";
 import { searchFormSchema, SearchFormType } from "@/schemas/searchFormSchema";
 
 export function SearchForm() {
-  const { filterTransactions, statuses } = useTransactions();
-  const isBusy =
-    statuses.filter.loading || statuses.load.loading || statuses.add.loading;
+  const { filterTransactions, isBusy } = useTransactions((context) => ({
+    filterTransactions: context.filterTransactions,
+    isBusy:
+      context.statuses.load.loading ||
+      context.statuses.filter.loading ||
+      context.statuses.add.loading,
+  }));
 
   const { register, handleSubmit } = useForm<SearchFormType>({
     resolver: zodResolver(searchFormSchema),

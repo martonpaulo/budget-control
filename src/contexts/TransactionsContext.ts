@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext } from "use-context-selector";
 
 import { NewTransactionFormType } from "@/schemas/newTransactionFormSchema";
 import { TransactionType } from "@/types/transaction";

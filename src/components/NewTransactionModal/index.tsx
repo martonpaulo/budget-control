@@ -23,7 +23,7 @@ interface NewTransactionModalProps {
 }
 
 export function NewTransactionModal({ onClose }: NewTransactionModalProps) {
-  const { addTransaction } = useTransactions();
+  const addTransaction = useTransactions((context) => context.addTransaction);
 
   const {
     control,

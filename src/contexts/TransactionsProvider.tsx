@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 import {
   AsyncStatusType,
@@ -29,17 +29,17 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     add: { loading: false, error: null, success: false },
   });
 
-  const updateStatus = useCallback(
-    (key: keyof typeof statuses, status: Partial<AsyncStatusType>) => {
-      setStatuses((prev) => ({
-        ...prev,
-        [key]: { ...prev[key], ...status },
-      }));
-    },
-    []
-  );
+  function updateStatus(
+    key: keyof typeof statuses,
+    status: Partial<AsyncStatusType>
+  ) {
+    setStatuses((prev) => ({
+      ...prev,
+      [key]: { ...prev[key], ...status },
+    }));
+  }
 
-  const loadTransactions = useCallback(async () => {
+  async function loadTransactions() {
     updateStatus("load", { loading: true, error: null, success: false });
 
     try {
@@ -54,53 +54,47 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
         error: "Error loading transactions.",
       });
     }
-  }, [updateStatus]);
+  }
 
-  const filterTransactions = useCallback(
-    async (query: string) => {
-      updateStatus("filter", { loading: true, error: null, success: false });
+  async function filterTransactions(query: string) {
+    updateStatus("filter", { loading: true, error: null, success: false });
 
-      try {
-        const data = await fetchTransactions(query);
-        setFilteredTransactions(data);
-        updateStatus("filter", { loading: false, success: true });
-      } catch (error) {
-        console.error("Error filtering transactions:", error);
-        updateStatus("filter", {
-          loading: false,
-          error: "Error filtering transactions.",
-        });
-      }
-    },
-    [updateStatus]
-  );
+    try {
+      const data = await fetchTransactions(query);
+      setFilteredTransactions(data);
+      updateStatus("filter", { loading: false, success: true });
+    } catch (error) {
+      console.error("Error filtering transactions:", error);
+      updateStatus("filter", {
+        loading: false,
+        error: "Error filtering transactions.",
+      });
+    }
+  }
 
-  const addTransaction = useCallback(
-    async (newTransactionForm: NewTransactionFormType) => {
-      updateStatus("add", { loading: true, error: null, success: false });
+  async function addTransaction(newTransactionForm: NewTransactionFormType) {
+    updateStatus("add", { loading: true, error: null, success: false });
 
-      try {
-        const newTransaction = await postTransaction(newTransactionForm);
-        setTransactions((prev) => {
-          const updatedList = [newTransaction, ...prev];
-          setFilteredTransactions(updatedList);
-          return updatedList;
-        });
-        updateStatus("add", { loading: false, success: true });
-      } catch (error) {
-        console.error("Error adding transaction:", error);
-        updateStatus("add", {
-          loading: false,
-          error: "Error adding transaction.",
-        });
-      }
-    },
-    [updateStatus]
-  );
+    try {
+      const newTransaction = await postTransaction(newTransactionForm);
+      setTransactions((prev) => {
+        const updatedList = [newTransaction, ...prev];
+        setFilteredTransactions(updatedList);
+        return updatedList;
+      });
+      updateStatus("add", { loading: false, success: true });
+    } catch (error) {
+      console.error("Error adding transaction:", error);
+      updateStatus("add", {
+        loading: false,
+        error: "Error adding transaction.",
+      });
+    }
+  }
 
   useEffect(() => {
     loadTransactions();
-  }, [loadTransactions]);
+  }, []);
 
   const contextValue: TransactionsContextType = {
     transactions,

@@ -20,11 +20,15 @@ For more of my work, visit my portfolio: [martonpaulo.com](https://martonpaulo.c
 
 ## 🔧 Features
 
-1.
+1. **Summary Dashboard**: Instantly see your total income, expenses, and overall balance.
+2. **Add Transactions**: Quickly log your income and expenses.
+3. **List Transactions**: View all transactions in a clear table format.
+4. **Pagination**: Easily navigate through multiple pages of transactions.
+5. **Search and Filter**: Find specific transactions using smart filtering.
 
 ## 🛠️ Technologies Used
 
-This project is built using React, Vite, TypeScript, Styled Components, Phosphor Icons, Radix UI, JSON Server, Axios, and GitHub Actions.
+This project is built using React, Vite, TypeScript, Styled Components, Phosphor Icons, Radix UI, JSON Server, Axios, Context API, Context Selector, React Compiler and GitHub Actions.
 
 ## 🚀 Getting Started
 
@@ -59,17 +63,13 @@ In the project directory, you can run the following scripts:
 - [x] Add GitHub Actions and deploy to GitHub Pages
 - [x] Modify overall design: font, colors, etc.
 - [x] List project technologies
-- [ ] Host JSON server
-- [ ] List project features
+- [x] List project features
 - [ ] Add pagination to transactions
 - [ ] Add responsive layout
+- [ ] Alternative to JSON Server
 - [ ] Add project recording
 - [ ] Add project to portfolio
 
 ## 📄 License
 
 This project is licensed under the **MIT License**. For more details, see the [LICENSE](LICENSE) file.
-
-```
-
-```
