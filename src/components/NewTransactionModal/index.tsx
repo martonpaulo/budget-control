@@ -10,6 +10,7 @@ import {
   TransactionRadioGroup,
   TransactionTypeButton,
 } from "@/components/NewTransactionModal/styles";
+import { useTransactions } from "@/hooks/useTransactions";
 import {
   newTransactionFormInitialValues,
   newTransactionFormSchema,
@@ -17,21 +18,28 @@ import {
 } from "@/schemas/newTransactionFormSchema";
 import { TransactionVariantEnum } from "@/types/transaction";
 
-export function NewTransactionModal() {
+interface NewTransactionModalProps {
+  onClose: () => void;
+}
+
+export function NewTransactionModal({ onClose }: NewTransactionModalProps) {
+  const { addTransaction } = useTransactions();
+
   const {
     control,
     register,
     handleSubmit,
     formState: { isSubmitting },
+    reset,
   } = useForm<NewTransactionFormType>({
     resolver: zodResolver(newTransactionFormSchema),
     defaultValues: newTransactionFormInitialValues,
   });
 
   async function handleCreateNewTransaction(data: NewTransactionFormType) {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    console.log(data);
+    await addTransaction(data);
+    reset();
+    onClose();
   }
 
   return (

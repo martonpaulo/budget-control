@@ -5,7 +5,8 @@ import { useTransactions } from "@/hooks/useTransactions";
 import { formatCurrency, getSummary } from "@/utils/moneyFormatter";
 
 export function useSummaryCards() {
-  const { transactions, isLoading } = useTransactions();
+  const { transactions, statuses } = useTransactions();
+  const isLoading = statuses.load.loading;
 
   const summary = useMemo(() => getSummary(transactions), [transactions]);
 
@@ -39,7 +40,9 @@ export function useSummaryCards() {
         skeletonBaseColor: isSummaryPositive
           ? ("green700" as const)
           : ("red700" as const),
-        skeletonHighlightColor: isSummaryPositive ? "green500" : "red500",
+        skeletonHighlightColor: isSummaryPositive
+          ? ("green500" as const)
+          : ("red500" as const),
       },
     ],
     [summary, isSummaryPositive]

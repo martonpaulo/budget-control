@@ -7,8 +7,10 @@ import { HomepageContainer } from "@/pages/Homepage/styles";
 import { SectionContainer } from "@/styles/shared";
 
 export function Homepage() {
-  const { filteredTransactions, filteredIsLoading, filteredIsError } =
-    useTransactions();
+  const { filteredTransactions, statuses } = useTransactions();
+
+  const isLoading = statuses.filter.loading || statuses.load.loading;
+  const error = statuses.filter.error || statuses.load.error;
 
   return (
     <HomepageContainer>
@@ -20,8 +22,8 @@ export function Homepage() {
         <SearchForm />
         <Table
           transactions={filteredTransactions}
-          isLoading={filteredIsLoading}
-          isError={filteredIsError}
+          isLoading={isLoading}
+          error={error}
         />
       </SectionContainer>
     </HomepageContainer>

@@ -38,7 +38,7 @@
       "amount": 200,
       "variant": "income",
       "category": "Freelance",
-      "createdAt": "2025-02-15T00:00:00.000Z"
+      "createdAt": "2024-02-15T00:00:00.000Z"
     },
     {
       "id": 6,
@@ -46,7 +46,7 @@
       "amount": 120,
       "variant": "outcome",
       "category": "Food",
-      "createdAt": "2025-02-20T00:00:00.000Z"
+      "createdAt": "2024-02-20T00:00:00.000Z"
     },
     {
       "id": 7,
@@ -54,7 +54,7 @@
       "amount": 230,
       "variant": "outcome",
       "category": "Utilities",
-      "createdAt": "2025-02-25T00:00:00.000Z"
+      "createdAt": "2024-02-25T00:00:00.000Z"
     },
     {
       "id": 8,
@@ -62,7 +62,15 @@
       "amount": 1200,
       "variant": "income",
       "category": "Investment",
-      "createdAt": "2025-03-01T00:00:00.000Z"
+      "createdAt": "2024-03-01T00:00:00.000Z"
+    },
+    {
+      "description": "Housekeeper",
+      "amount": 200,
+      "variant": "outcome",
+      "category": "House",
+      "createdAt": "2025-02-14T19:40:03.306Z",
+      "id": 9
     }
   ]
 }

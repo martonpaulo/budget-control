@@ -7,13 +7,11 @@ import { useTransactions } from "@/hooks/useTransactions";
 import { searchFormSchema, SearchFormType } from "@/schemas/searchFormSchema";
 
 export function SearchForm() {
-  const { filterTransactions } = useTransactions();
+  const { filterTransactions, statuses } = useTransactions();
+  const isBusy =
+    statuses.filter.loading || statuses.load.loading || statuses.add.loading;
 
-  const {
-    register,
-    handleSubmit,
-    formState: { isSubmitting },
-  } = useForm<SearchFormType>({
+  const { register, handleSubmit } = useForm<SearchFormType>({
     resolver: zodResolver(searchFormSchema),
   });
 
@@ -29,7 +27,7 @@ export function SearchForm() {
         {...register("query")}
       />
 
-      <button type="submit" disabled={isSubmitting}>
+      <button type="submit" disabled={isBusy}>
         <MagnifyingGlass size={20} />
         Search
       </button>
