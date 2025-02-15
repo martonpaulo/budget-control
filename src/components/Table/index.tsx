@@ -1,26 +1,58 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
+import { PageNavigator } from "@/components/PageNavigator";
 import { Skeleton } from "@/components/Skeleton";
-import { AmountHighlight, TableContent } from "@/components/Table/styles";
-import { NumberText } from "@/styles/shared";
-import { TransactionType } from "@/types/transaction";
-import { formatDate } from "@/utils/dateFormatter";
-import { formatCurrency } from "@/utils/moneyFormatter";
+import { TableContent } from "@/components/Table/styles";
+import { TransactionsTable } from "@/components/TransactionsTable";
+import { useTransactions } from "@/hooks/useTransactions";
 
-interface TableProps {
-  transactions: TransactionType[];
-  isLoading: boolean;
-  error: string | null;
-}
+export function Table() {
+  const {
+    transactions,
+    isEmpty,
+    isLoading,
+    error,
+    totalPages,
+    paginateTransactions,
+  } = useTransactions((context) => ({
+    transactions: context.filteredTransactions,
+    isEmpty: context.filteredTransactions.length === 0,
+    isLoading: context.statuses.filter.loading || context.statuses.load.loading,
+    error: context.statuses.filter.error || context.statuses.load.error,
+    totalPages: Math.ceil(context.filteredTransactionsCount / 10),
+    paginateTransactions: context.paginateTransactions,
+  }));
 
-export function Table({ transactions, isLoading, error }: TableProps) {
-  const isEmpty = transactions.length === 0;
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
-  if (error) return renderTable(<ErrorTable error={error} />);
-  if (isLoading) return renderTable(<LoadingTable />);
-  if (isEmpty) return renderTable(<EmptyTable />);
+  if (error) {
+    return renderTable(<ErrorTable error={error} />);
+  }
 
-  return renderTable(<TransactionsTable transactions={transactions} />);
+  if (isLoading) {
+    return renderTable(<LoadingTable />);
+  }
+
+  if (isEmpty) {
+    return renderTable(<EmptyTable />);
+  }
+
+  function handlePageChange(page: number) {
+    paginateTransactions(page + 1);
+    setCurrentPage(page);
+  }
+
+  return (
+    <>
+      {renderTable(<TransactionsTable transactions={transactions} />)}
+
+      <PageNavigator
+        totalPages={totalPages}
+        page={currentPage}
+        onPageChange={handlePageChange}
+      />
+    </>
+  );
 }
 
 function renderTable(content: ReactNode) {
@@ -46,13 +78,17 @@ function ErrorTable({ error }: ErrorTableProps) {
 }
 
 function LoadingTable() {
-  return Array.from({ length: 3 }, (_, index) => (
-    <tr key={index}>
-      <td colSpan={4}>
-        <Skeleton loading>Loading...</Skeleton>
-      </td>
-    </tr>
-  ));
+  return (
+    <>
+      {Array.from({ length: 3 }, (_, index) => (
+        <tr key={index}>
+          <td colSpan={4}>
+            <Skeleton loading>Loading...</Skeleton>
+          </td>
+        </tr>
+      ))}
+    </>
+  );
 }
 
 function EmptyTable() {
@@ -61,29 +97,4 @@ function EmptyTable() {
       <td colSpan={4}>No transactions found.</td>
     </tr>
   );
-}
-
-interface TransactionsTableProps {
-  transactions: TransactionType[];
-}
-
-function TransactionsTable({ transactions }: TransactionsTableProps) {
-  return transactions.map((transaction) => (
-    <tr key={transaction.id}>
-      <td>{transaction.description}</td>
-      <td>
-        <AmountHighlight $variant={transaction.variant}>
-          <NumberText $bold>
-            {formatCurrency({
-              amount: transaction.amount,
-              transactionVariant: transaction.variant,
-              hasSign: true,
-            })}
-          </NumberText>
-        </AmountHighlight>
-      </td>
-      <td>{transaction.category}</td>
-      <td>{formatDate(transaction.createdAt)}</td>
-    </tr>
-  ));
 }

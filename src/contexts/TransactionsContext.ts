@@ -17,10 +17,13 @@ export type StatusStateType = {
 
 export interface TransactionsContextType {
   transactions: TransactionType[];
+  transactionsTotalCount: number;
   filteredTransactions: TransactionType[];
+  filteredTransactionsCount: number;
   statuses: StatusStateType;
   loadTransactions: () => Promise<void>;
-  filterTransactions: (query: string) => Promise<void>;
+  filterTransactions: (query: string) => void;
+  paginateTransactions: (page: number) => void;
   addTransaction: (newTransaction: NewTransactionFormType) => Promise<void>;
 }
 

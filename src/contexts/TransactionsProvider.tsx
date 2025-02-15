@@ -19,18 +19,22 @@ interface TransactionsProviderProps {
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<TransactionType[]>([]);
+  const [transactionsTotalCount, setTransactionsTotalCount] = useState(0);
   const [filteredTransactions, setFilteredTransactions] = useState<
     TransactionType[]
   >([]);
+  const [filteredTransactionsCount, setFilteredTransactionsCount] = useState(0);
+  const [filterQuery, setFilterQuery] = useState("");
 
-  const [statuses, setStatuses] = useState<StatusStateType>({
+  const initialStatuses: StatusStateType = {
     load: { loading: false, error: null, success: false },
     filter: { loading: false, error: null, success: false },
     add: { loading: false, error: null, success: false },
-  });
+  };
+  const [statuses, setStatuses] = useState<StatusStateType>(initialStatuses);
 
   function updateStatus(
-    key: keyof typeof statuses,
+    key: keyof StatusStateType,
     status: Partial<AsyncStatusType>
   ) {
     setStatuses((prev) => ({
@@ -41,11 +45,13 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
   async function loadTransactions() {
     updateStatus("load", { loading: true, error: null, success: false });
-
     try {
-      const data = await fetchTransactions();
-      setTransactions(data);
-      setFilteredTransactions(data);
+      const { transactions: fetchedTransactions, totalCount } =
+        await fetchTransactions({});
+      setTransactions(fetchedTransactions);
+      setFilteredTransactions(fetchedTransactions);
+      setTransactionsTotalCount(totalCount);
+      setFilteredTransactionsCount(totalCount);
       updateStatus("load", { loading: false, success: true });
     } catch (error) {
       console.error("Error loading transactions:", error);
@@ -58,10 +64,19 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
   async function filterTransactions(query: string) {
     updateStatus("filter", { loading: true, error: null, success: false });
-
+    if (!query) {
+      setFilteredTransactions(transactions);
+      setFilteredTransactionsCount(transactionsTotalCount);
+      setFilterQuery("");
+      updateStatus("filter", { loading: false, success: true });
+      return;
+    }
     try {
-      const data = await fetchTransactions(query);
-      setFilteredTransactions(data);
+      const { transactions: fetchedTransactions, totalCount } =
+        await fetchTransactions({ query });
+      setFilteredTransactions(fetchedTransactions);
+      setFilteredTransactionsCount(totalCount);
+      setFilterQuery(query);
       updateStatus("filter", { loading: false, success: true });
     } catch (error) {
       console.error("Error filtering transactions:", error);
@@ -72,16 +87,40 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     }
   }
 
+  async function paginateTransactions(page: number) {
+    updateStatus("filter", { loading: true, error: null, success: false });
+    try {
+      const { transactions: fetchedTransactions, totalCount } =
+        await fetchTransactions({
+          query: filterQuery,
+          page,
+        });
+      setFilteredTransactions(fetchedTransactions);
+      setFilteredTransactionsCount(totalCount);
+      updateStatus("filter", { loading: false, success: true });
+    } catch (error) {
+      console.error("Error paginating transactions:", error);
+      updateStatus("filter", {
+        loading: false,
+        error: "Error paginating transactions.",
+      });
+    }
+  }
+
   async function addTransaction(newTransactionForm: NewTransactionFormType) {
     updateStatus("add", { loading: true, error: null, success: false });
-
     try {
       const newTransaction = await postTransaction(newTransactionForm);
-      setTransactions((prev) => {
-        const updatedList = [newTransaction, ...prev];
-        setFilteredTransactions(updatedList);
-        return updatedList;
-      });
+      setTransactions((prev) => [newTransaction, ...prev]);
+      setTransactionsTotalCount((prev) => prev + 1);
+
+      if (filterQuery.trim()) {
+        // If a filter is active, refresh the filtered list from the server
+        filterTransactions(filterQuery);
+      } else {
+        setFilteredTransactions((prev) => [newTransaction, ...prev]);
+        setFilteredTransactionsCount((prev) => prev + 1);
+      }
       updateStatus("add", { loading: false, success: true });
     } catch (error) {
       console.error("Error adding transaction:", error);
@@ -98,9 +137,12 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
 
   const contextValue: TransactionsContextType = {
     transactions,
+    transactionsTotalCount,
     filteredTransactions,
+    filteredTransactionsCount,
     statuses,
     loadTransactions,
+    paginateTransactions,
     filterTransactions,
     addTransaction,
   };

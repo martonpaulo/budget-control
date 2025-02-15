@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { TransactionVariantEnum } from "@/types/transaction";
-
 export const TableContent = styled.table`
   border-collapse: separate;
   border-spacing: 0 0.5rem;
@@ -44,15 +42,4 @@ export const TableContent = styled.table`
       text-align: center;
     }
   }
-`;
-
-interface AmountHighlightProps {
-  $variant: TransactionVariantEnum;
-}
-
-export const AmountHighlight = styled.span<AmountHighlightProps>`
-  color: ${(props) =>
-    props.$variant === TransactionVariantEnum.INCOME
-      ? props.theme.colors.green300
-      : props.theme.colors.red300};
 `;

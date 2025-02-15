@@ -2,14 +2,23 @@ import { api } from "@/lib/axios";
 import { NewTransactionFormType } from "@/schemas/newTransactionFormSchema";
 import { TransactionType } from "@/types/transaction";
 
-export async function fetchTransactions(
-  query?: string
-): Promise<TransactionType[]> {
+interface FetchTransactionsParams {
+  query?: string;
+  page?: number;
+}
+
+export async function fetchTransactions({
+  query,
+  page = 1,
+}: FetchTransactionsParams) {
   const response = await api.get("/transactions", {
-    params: { q: query, _sort: "createdAt", _order: "desc" },
+    params: { q: query, _sort: "createdAt", _order: "desc", _page: page },
   });
 
-  return response.data;
+  return {
+    transactions: response.data,
+    totalCount: Number(response.headers["x-total-count"]),
+  };
 }
 
 export async function postTransaction(
