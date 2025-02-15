@@ -47,6 +47,12 @@ In the project directory, you can run the following scripts:
 - **`npm run lint`** - Runs ESLint to lint the code and ensure code quality.
 - **`npm run server`** - Starts the JSON Server at `http://localhost:3333/`.
 
+## 📦 API Service
+
+The project uses a JSON Server to simulate a backend API service. The server runs on `http://localhost:3333/` and serves the transactions data.
+
+If you don't want to use the JSON Server, you can use the localStorage to store the transactions data. To do this, you can set the `VITE_USE_LOCAL_STORAGE` environment variable to `true` in the `.env` file.
+
 ## TODO List
 
 - [x] Set up project with Vite, React, and TypeScript
@@ -65,8 +71,8 @@ In the project directory, you can run the following scripts:
 - [x] List project technologies
 - [x] List project features
 - [x] Add pagination to transactions
+- [x] Alternative to JSON Server
 - [ ] Add responsive layout
-- [ ] Alternative to JSON Server
 - [ ] Add project recording
 - [ ] Add project to portfolio
 
