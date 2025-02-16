@@ -67,8 +67,9 @@ export function NewTransactionModal({ onClose }: NewTransactionModalProps) {
             type="number"
             placeholder="Amount"
             required
-            max={9999999.99}
+            max={9999999}
             min={0.01}
+            step={0.01}
             {...register("amount", { valueAsNumber: true })}
           />
           <input

@@ -12,6 +12,7 @@ import {
   postTransaction,
 } from "@/services/transactionsService";
 import { TransactionType } from "@/types/transaction";
+import { simulateDelay } from "@/utils/delaySimulator";
 
 interface TransactionsProviderProps {
   children: ReactNode;
@@ -46,8 +47,9 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   async function loadTransactions() {
     updateStatus("load", { loading: true, error: null, success: false });
     try {
+      const emptyQueryWithDelay = await simulateDelay({});
       const { transactions: fetchedTransactions, totalCount } =
-        await fetchTransactions({});
+        await fetchTransactions(emptyQueryWithDelay);
       setTransactions(fetchedTransactions);
       setFilteredTransactions(fetchedTransactions);
       setTransactionsTotalCount(totalCount);
@@ -110,7 +112,10 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   async function addTransaction(newTransactionForm: NewTransactionFormType) {
     updateStatus("add", { loading: true, error: null, success: false });
     try {
-      const newTransaction = await postTransaction(newTransactionForm);
+      const newTransactionFormWithDelay = await simulateDelay(
+        newTransactionForm
+      );
+      const newTransaction = await postTransaction(newTransactionFormWithDelay);
       setTransactions((prev) => [newTransaction, ...prev]);
       setTransactionsTotalCount((prev) => prev + 1);
 

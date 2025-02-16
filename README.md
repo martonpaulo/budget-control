@@ -73,7 +73,7 @@ If you don't want to use the JSON Server, you can use the localStorage to store 
 - [x] Add pagination to transactions
 - [x] Alternative to JSON Server
 - [x] Set character limit for form inputs
-- [ ] Set delay only for the first request
+- [x] Set delay only for the first request
 - [ ] Add delete transaction feature
 - [ ] Add responsive layout
 - [ ] Add project recording

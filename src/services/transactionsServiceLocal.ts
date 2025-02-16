@@ -12,10 +12,6 @@ export interface FetchTransactionsParams {
 
 const ITEMS_PER_PAGE = 10;
 
-function simulateDelay<T>(result: T, delay = 1000): Promise<T> {
-  return new Promise((resolve) => setTimeout(() => resolve(result), delay));
-}
-
 export async function fetchTransactionsLocal({
   query,
   page = 1,
@@ -42,7 +38,7 @@ export async function fetchTransactionsLocal({
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const paginated = transactions.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-  return simulateDelay({ transactions: paginated, totalCount });
+  return { transactions: paginated, totalCount };
 }
 
 export async function postTransactionLocal(
@@ -63,5 +59,5 @@ export async function postTransactionLocal(
   const updatedTransactions = [newTransaction, ...transactions];
   setStoredTransactions(updatedTransactions);
 
-  return simulateDelay(newTransaction);
+  return newTransaction;
 }
