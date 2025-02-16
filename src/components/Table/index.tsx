@@ -14,6 +14,7 @@ export function Table() {
     error,
     totalPages,
     paginateTransactions,
+    removeTransaction,
   } = useTransactions((context) => ({
     transactions: context.filteredTransactions,
     isEmpty: context.filteredTransactions.length === 0,
@@ -21,6 +22,7 @@ export function Table() {
     error: context.statuses.filter.error || context.statuses.load.error,
     totalPages: Math.ceil(context.filteredTransactionsCount / 10),
     paginateTransactions: context.paginateTransactions,
+    removeTransaction: context.removeTransaction,
   }));
 
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -37,6 +39,10 @@ export function Table() {
     return renderTable(<EmptyTable />);
   }
 
+  function handleRemoveTransaction(id: number) {
+    removeTransaction(id);
+  }
+
   function handlePageChange(page: number) {
     paginateTransactions(page + 1);
     setCurrentPage(page);
@@ -44,7 +50,12 @@ export function Table() {
 
   return (
     <>
-      {renderTable(<TransactionsTable transactions={transactions} />)}
+      {renderTable(
+        <TransactionsTable
+          transactions={transactions}
+          onRemove={handleRemoveTransaction}
+        />
+      )}
 
       <PageNavigator
         totalPages={totalPages}

@@ -1,3 +1,5 @@
+import { Trash } from "phosphor-react";
+
 import { AmountHighlight } from "@/components/TransactionsTable/styles";
 import { NumberText } from "@/styles/shared";
 import { TransactionType } from "@/types/transaction";
@@ -6,9 +8,13 @@ import { formatCurrency } from "@/utils/moneyFormatter";
 
 interface TransactionsTableProps {
   transactions: TransactionType[];
+  onRemove: (id: number) => void;
 }
 
-export function TransactionsTable({ transactions }: TransactionsTableProps) {
+export function TransactionsTable({
+  transactions,
+  onRemove,
+}: TransactionsTableProps) {
   return transactions.map((transaction) => (
     <tr key={transaction.id}>
       <td>{transaction.description}</td>
@@ -25,6 +31,11 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
       </td>
       <td>{transaction.category}</td>
       <td>{formatDate(transaction.createdAt)}</td>
+      <td>
+        <button onClick={() => onRemove(transaction.id)}>
+          <Trash />
+        </button>
+      </td>
     </tr>
   ));
 }

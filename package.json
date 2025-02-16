@@ -24,7 +24,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint src/**/*.{tsx,ts}",
-    "server": "json-server db.json --port 3333 --watch --delay 1000"
+    "server": "json-server db.json --port 3333 --watch"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.0.0",

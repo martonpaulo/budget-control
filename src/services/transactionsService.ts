@@ -1,8 +1,10 @@
 import {
+  deleteTransactionAPI,
   fetchTransactionsAPI,
   postTransactionAPI,
 } from "@/services/transactionsServiceAPI";
 import {
+  deleteTransactionLocal,
   fetchTransactionsLocal,
   postTransactionLocal,
 } from "@/services/transactionsServiceLocal";
@@ -16,3 +18,7 @@ export const fetchTransactions = useLocalStorage
 export const postTransaction = useLocalStorage
   ? postTransactionLocal
   : postTransactionAPI;
+
+export const deleteTransaction = useLocalStorage
+  ? deleteTransactionLocal
+  : deleteTransactionAPI;

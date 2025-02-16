@@ -35,3 +35,9 @@ export async function postTransactionAPI(
 
   return response.data;
 }
+
+export async function deleteTransactionAPI(
+  transactionId: number
+): Promise<void> {
+  await api.delete(`/transactions/${transactionId}`);
+}

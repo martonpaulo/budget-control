@@ -24,7 +24,7 @@ export const TableContent = styled.table`
     }
 
     &:nth-child(1) {
-      width: 35%;
+      width: 30%;
     }
 
     &:nth-child(2) {
@@ -40,6 +40,21 @@ export const TableContent = styled.table`
     &:nth-child(4) {
       width: 20%;
       text-align: center;
+    }
+
+    &:nth-child(5) {
+      width: 5%;
+      text-align: center;
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: ${(props) => props.theme.colors.gray300};
+
+      &:hover {
+        color: ${(props) => props.theme.colors.green500};
+      }
     }
   }
 `;

@@ -61,3 +61,11 @@ export async function postTransactionLocal(
 
   return newTransaction;
 }
+
+export async function deleteTransactionLocal(
+  transactionId: number
+): Promise<void> {
+  let transactions = getStoredTransactions();
+  transactions = transactions.filter((t) => t.id !== transactionId);
+  setStoredTransactions(transactions);
+}

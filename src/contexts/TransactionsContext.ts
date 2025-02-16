@@ -13,6 +13,7 @@ export type StatusStateType = {
   load: AsyncStatusType;
   filter: AsyncStatusType;
   add: AsyncStatusType;
+  remove: AsyncStatusType;
 };
 
 export interface TransactionsContextType {
@@ -24,6 +25,7 @@ export interface TransactionsContextType {
   loadTransactions: () => Promise<void>;
   filterTransactions: (query: string) => void;
   paginateTransactions: (page: number) => void;
+  removeTransaction: (id: number) => Promise<void>;
   addTransaction: (newTransaction: NewTransactionFormType) => Promise<void>;
 }
 

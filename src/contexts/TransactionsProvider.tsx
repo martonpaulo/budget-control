@@ -8,6 +8,7 @@ import {
 } from "@/contexts/TransactionsContext";
 import { NewTransactionFormType } from "@/schemas/newTransactionFormSchema";
 import {
+  deleteTransaction,
   fetchTransactions,
   postTransaction,
 } from "@/services/transactionsService";
@@ -31,6 +32,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     load: { loading: false, error: null, success: false },
     filter: { loading: false, error: null, success: false },
     add: { loading: false, error: null, success: false },
+    remove: { loading: false, error: null, success: false },
   };
   const [statuses, setStatuses] = useState<StatusStateType>(initialStatuses);
 
@@ -44,10 +46,10 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     }));
   }
 
-  async function loadTransactions() {
+  async function loadTransactions(hasDelay = true) {
     updateStatus("load", { loading: true, error: null, success: false });
     try {
-      const emptyQueryWithDelay = await simulateDelay({});
+      const emptyQueryWithDelay = await simulateDelay({}, hasDelay ? 1000 : 0);
       const { transactions: fetchedTransactions, totalCount } =
         await fetchTransactions(emptyQueryWithDelay);
       setTransactions(fetchedTransactions);
@@ -136,6 +138,21 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     }
   }
 
+  async function removeTransaction(transactionId: number) {
+    updateStatus("remove", { loading: true, error: null, success: false });
+    try {
+      await deleteTransaction(transactionId);
+      loadTransactions(false);
+      updateStatus("remove", { loading: false, success: true });
+    } catch (error) {
+      console.error("Error deleting transaction:", error);
+      updateStatus("remove", {
+        loading: false,
+        error: "Error deleting transaction.",
+      });
+    }
+  }
+
   useEffect(() => {
     loadTransactions();
   }, []);
@@ -150,6 +167,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     paginateTransactions,
     filterTransactions,
     addTransaction,
+    removeTransaction,
   };
 
   return (
