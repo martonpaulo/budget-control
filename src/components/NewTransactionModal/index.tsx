@@ -60,18 +60,22 @@ export function NewTransactionModal({ onClose }: NewTransactionModalProps) {
             type="text"
             placeholder="Description"
             required
+            maxLength={40}
             {...register("description")}
           />
           <input
             type="number"
             placeholder="Amount"
             required
+            max={9999999.99}
+            min={0.01}
             {...register("amount", { valueAsNumber: true })}
           />
           <input
             type="text"
             placeholder="Category"
             required
+            maxLength={25}
             {...register("category")}
           />
 
