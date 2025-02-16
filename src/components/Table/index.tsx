@@ -41,6 +41,7 @@ export function Table() {
 
   function handleRemoveTransaction(id: number) {
     removeTransaction(id);
+    setCurrentPage(0);
   }
 
   function handlePageChange(page: number) {
