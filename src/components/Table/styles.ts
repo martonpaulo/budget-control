@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const TableContainer = styled.div`
+  overflow-x: scroll;
+`;
+
 export const TableContent = styled.table`
   border-collapse: separate;
   border-spacing: 0 0.5rem;
@@ -25,21 +29,25 @@ export const TableContent = styled.table`
 
     &:nth-child(1) {
       width: 30%;
+      min-width: 15rem;
     }
 
     &:nth-child(2) {
       width: 25%;
       text-align: right;
+      min-width: 12.5rem;
     }
 
     &:nth-child(3) {
       width: 20%;
       text-align: center;
+      min-width: 12rem;
     }
 
     &:nth-child(4) {
       width: 20%;
       text-align: center;
+      min-width: 12rem;
     }
 
     &:nth-child(5) {
@@ -51,10 +59,25 @@ export const TableContent = styled.table`
       background: none;
       border: none;
       color: ${(props) => props.theme.colors.gray300};
+      line-height: 0;
 
       &:hover {
         color: ${(props) => props.theme.colors.green500};
       }
     }
+  }
+`;
+
+export const TransactionsTableContent = styled.div`
+  ${(props) => props.theme.screens.sm} {
+    display: none;
+  }
+`;
+
+export const TransactionsCardsContent = styled.div`
+  display: none;
+
+  ${(props) => props.theme.screens.sm} {
+    display: block;
   }
 `;

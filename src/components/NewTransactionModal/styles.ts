@@ -20,9 +20,20 @@ export const Content = styled(Dialog.Content)`
   background-color: ${(props) => props.theme.colors.gray800};
 
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  ${(props) => props.theme.screens.sm} {
+    padding: 1.5rem;
+    min-width: 100vw;
+    border-radius: 20px 20px 0 0;
+
+    bottom: 0;
+  }
+
+  ${(props) => props.theme.screens.min.md} {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   form {
     margin-top: 2rem;
@@ -79,6 +90,7 @@ export const CloseButton = styled(Dialog.Close)`
   top: 1.5rem;
   right: 1.5rem;
   color: ${(props) => props.theme.colors.gray500};
+  line-height: 0;
 `;
 
 export const TransactionRadioGroup = styled(RadioGroup.Root)`
@@ -103,6 +115,7 @@ export const TransactionTypeButton = styled(
   gap: 0.5rem;
   border-radius: ${(props) => props.theme.sizes.borderRadius};
   color: ${(props) => props.theme.colors.gray300};
+  line-height: 0;
 
   &:focus {
     box-shadow: 0 0 0 2px

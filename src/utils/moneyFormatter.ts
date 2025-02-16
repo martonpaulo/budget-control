@@ -4,12 +4,14 @@ interface FormatCurrencyProps {
   amount: number;
   transactionVariant?: TransactionVariantEnum;
   hasSign?: boolean;
+  hasSpaceBetween?: boolean;
 }
 
 export function formatCurrency({
   amount,
   transactionVariant,
   hasSign = false,
+  hasSpaceBetween = true,
 }: FormatCurrencyProps) {
   const amountInCurrency = amount.toLocaleString("en-US", {
     minimumFractionDigits: 2,
@@ -21,8 +23,9 @@ export function formatCurrency({
   }
 
   const sign = transactionVariant === TransactionVariantEnum.INCOME ? "+" : "-";
+  const space = hasSpaceBetween ? " " : "";
 
-  return `${sign} $${amountInCurrency}`;
+  return `${sign}${space}$${amountInCurrency}`;
 }
 
 export function getSummary(transactions: TransactionType[]) {

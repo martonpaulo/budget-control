@@ -2,7 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { MagnifyingGlass } from "phosphor-react";
 import { useForm } from "react-hook-form";
 
-import { SearchFormContainer } from "@/components/SearchForm/styles";
+import {
+  ButtonText,
+  SearchFormContainer,
+} from "@/components/SearchForm/styles";
 import { useTransactions } from "@/hooks/useTransactions";
 import { searchFormSchema, SearchFormType } from "@/schemas/searchFormSchema";
 
@@ -33,7 +36,7 @@ export function SearchForm() {
 
       <button type="submit" disabled={isBusy}>
         <MagnifyingGlass size={20} />
-        Search
+        <ButtonText>Search</ButtonText>
       </button>
     </SearchFormContainer>
   );

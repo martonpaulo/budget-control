@@ -28,7 +28,7 @@ export const defaultTheme = {
 
     min: {
       md: "@media (min-width: 481px)",
-      lg: "@media (min-width: 1189px)",
+      lg: "@media (min-width: 769px)",
     },
 
     max: {

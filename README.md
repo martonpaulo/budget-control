@@ -75,9 +75,9 @@ If you don't want to use the JSON Server, you can use the localStorage to store 
 - [x] Set character limit for form inputs
 - [x] Set delay only for the first request
 - [x] Add delete transaction feature
-- [ ] Add responsive layout
-- [ ] Add project recording
-- [ ] Add project to portfolio
+- [x] Add responsive layout
+- [x] Add project recording
+- [x] Add project to portfolio
 
 ## 📄 License
 

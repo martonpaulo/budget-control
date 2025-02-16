@@ -50,7 +50,6 @@ export const GlobalStyle = createGlobalStyle`
   button {
     border: none;
     background-color: transparent;
-    line-height: 0;
     color: ${(props) => props.theme.colors.white};
     cursor: pointer;
 

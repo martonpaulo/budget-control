@@ -2,7 +2,13 @@ import { ReactNode, useState } from "react";
 
 import { PageNavigator } from "@/components/PageNavigator";
 import { Skeleton } from "@/components/Skeleton";
-import { TableContent } from "@/components/Table/styles";
+import {
+  TableContainer,
+  TableContent,
+  TransactionsCardsContent,
+  TransactionsTableContent,
+} from "@/components/Table/styles";
+import { TransactionsCards } from "@/components/TransactionsCards";
 import { TransactionsTable } from "@/components/TransactionsTable";
 import { useTransactions } from "@/hooks/useTransactions";
 
@@ -52,11 +58,20 @@ export function Table() {
   return (
     <>
       {renderTable(
-        <TransactionsTable
+        <TransactionsTableContent>
+          <TransactionsTable
+            transactions={transactions}
+            onRemove={handleRemoveTransaction}
+          />
+        </TransactionsTableContent>
+      )}
+
+      <TransactionsCardsContent>
+        <TransactionsCards
           transactions={transactions}
           onRemove={handleRemoveTransaction}
         />
-      )}
+      </TransactionsCardsContent>
 
       <PageNavigator
         totalPages={totalPages}
@@ -69,9 +84,11 @@ export function Table() {
 
 function renderTable(content: ReactNode) {
   return (
-    <TableContent>
-      <tbody>{content}</tbody>
-    </TableContent>
+    <TableContainer>
+      <TableContent>
+        <tbody>{content}</tbody>
+      </TableContent>
+    </TableContainer>
   );
 }
 

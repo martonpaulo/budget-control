@@ -5,6 +5,7 @@ import {
   HeaderContainer,
   HeaderContent,
   NewTransactionButton,
+  TitleContainer,
 } from "@/components/Header/styles";
 import { NewTransactionModal } from "@/components/NewTransactionModal";
 import { SectionContainer } from "@/styles/shared";
@@ -16,7 +17,7 @@ export function Header() {
     <HeaderContainer>
       <SectionContainer>
         <HeaderContent>
-          <h1>Budget Control</h1>
+          <TitleContainer>Budget Control</TitleContainer>
 
           <Dialog.Root open={isModalOpen} onOpenChange={setIsModalOpen}>
             <Dialog.Trigger asChild>

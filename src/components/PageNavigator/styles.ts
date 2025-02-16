@@ -23,6 +23,7 @@ export const PageList = styled.ul`
 const Button = styled.button`
   color: ${(props) => props.theme.colors.green500};
   margin: 0 1rem;
+  line-height: 0;
 
   &:disabled {
     color: ${(props) => props.theme.colors.gray600};

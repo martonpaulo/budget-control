@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const SearchFormContainer = styled.form`
-  margin-top: 4rem;
   margin-bottom: 1.5rem;
 
   display: flex;
@@ -23,6 +22,7 @@ export const SearchFormContainer = styled.form`
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    line-height: 0;
 
     padding: 1rem;
     border: 1px solid ${(props) => props.theme.colors.green300};
@@ -40,5 +40,11 @@ export const SearchFormContainer = styled.form`
       opacity: 0.5;
       cursor: not-allowed;
     }
+  }
+`;
+
+export const ButtonText = styled.span`
+  ${(props) => props.theme.screens.max.md} {
+    display: none;
   }
 `;

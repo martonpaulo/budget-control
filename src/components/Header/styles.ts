@@ -11,13 +11,24 @@ export const HeaderContent = styled.div`
   align-items: center;
 `;
 
+export const TitleContainer = styled.h1`
+  color: ${(props) => props.theme.colors.gray100};
+  ${(props) => props.theme.screens.sm} {
+    font-size: 1rem;
+  }
+`;
+
 export const NewTransactionButton = styled.button`
-  height: 3.125rem;
   background-color: ${(props) => props.theme.colors.green500};
   color: ${(props) => props.theme.colors.white};
   font-weight: 600;
-  padding: 0 1.25rem;
+  display: flex;
+  padding: 0.75rem 1.25rem;
   border-radius: ${(props) => props.theme.sizes.borderRadius};
+
+  ${(props) => props.theme.screens.sm} {
+    padding: 0.5rem 1rem;
+  }
 
   &:hover {
     background-color: ${(props) => props.theme.colors.green700};
