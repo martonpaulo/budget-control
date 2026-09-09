@@ -8,7 +8,7 @@
 
 <img alt="Recording of live application" src="public/uploads/recording.gif" />
 
-🔗 **Live Project:** [martonpaulo.github.io/budget-control](https://martonpaulo.github.io/budget-control)
+🔗 **Live Project:** [archive.martonpaulo.com/budget-control](https://archive.martonpaulo.com/budget-control/)
 
 <br />
 
